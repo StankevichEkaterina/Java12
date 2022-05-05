@@ -71,4 +71,36 @@ class ManagerTest {
         assertArrayEquals(expected, actual);
     }
 
+    @Test
+    public void shouldSearchByAuthor() {
+        manager.save(Book3);
+        manager.save(Book4);
+        manager.save(Book1);
+        Product[] actual = manager.searchBy("Достоевский");
+        Product[] expected = {Book1};
+
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldSearchByManufacturer() {
+        manager.save(Smartphone3);
+        manager.save(Smartphone2);
+        manager.save(Smartphone1);
+        Product[] actual = manager.searchBy("Xiaomi");
+        Product[] expected = {Smartphone3};
+
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldSearchByManufacturerWithAnError() {
+        manager.save(Smartphone3);
+        manager.save(Smartphone2);
+        manager.save(Smartphone1);
+        Product[] actual = manager.searchBy("Honor");
+        Product[] expected = {};
+
+        assertArrayEquals(expected, actual);
+    }
 }

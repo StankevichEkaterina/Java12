@@ -14,7 +14,7 @@ public class Product {
     protected int price;
 
 
-    @Override
+
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -22,8 +22,16 @@ public class Product {
         return id == product.id && price == product.price && Objects.equals(title, product.title);
     }
 
-    @Override
+
     public int hashCode() {
         return Objects.hash(id, title, price);
+    }
+
+    public boolean matches(String search) {
+        if (getTitle().contains(search)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
